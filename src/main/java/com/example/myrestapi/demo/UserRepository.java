@@ -2,5 +2,5 @@ package com.example.myrestapi.demo;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface TripRepository extends CrudRepository<Trip, Long> {
+public interface UserRepository extends CrudRepository<User, Long>{
 }

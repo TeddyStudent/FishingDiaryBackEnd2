@@ -11,23 +11,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import com.example.myrestapi.demo.TripRepository;
 
 @RestController
-@RequestMapping(path="/demo")
+@RequestMapping(path="/")
 public class MyRestController {
 
     @Autowired
-
     private TripRepository tripRepository;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/hello", produces = "application/json")
+    @Autowired
+    private UserRepository userRepository;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/", produces = "application/json")
     public ResponseEntity<String> hello() {
-        System.out.println("Hit me!");
+        System.out.println("hello!");
         return new ResponseEntity<String>("Hello, you!", HttpStatus.OK);
     }
 
-    @RequestMapping(path="/all")
-    public @ResponseBody Iterable<Trip> getAllUsers() {
-        // This returns a JSON or XML with the users
+    @RequestMapping(method = RequestMethod.GET, value = "/about", produces = "application/json")
+    public ResponseEntity<String> about() {
+        System.out.println("about!");
+        return new ResponseEntity<String>("Fishing Diary server.", HttpStatus.OK);
+    }
+
+    @RequestMapping(path="/api/trip")
+    public @ResponseBody Iterable<Trip> getAllTrips() {
+        // This returns a JSON or XML with the trips
         return tripRepository.findAll();
+    }
+
+    @RequestMapping(path="/api/user")
+    public @ResponseBody Iterable<User> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return userRepository.findAll();
     }
 
 }
