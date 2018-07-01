@@ -32,13 +32,13 @@ public class MyRestController {
         return new ResponseEntity<String>("Fishing Diary server.", HttpStatus.OK);
     }
 
-    @RequestMapping(path="/api/trip")
+    @RequestMapping(method = RequestMethod.GET, value = "/api/trip", produces = "application/json")
     public @ResponseBody Iterable<Trip> getAllTrips() {
         // This returns a JSON or XML with the trips
         return tripRepository.findAll();
     }
 
-    @RequestMapping(path="/api/user")
+    @RequestMapping(method = RequestMethod.GET, value = "/api/user", produces = "application/json")
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();

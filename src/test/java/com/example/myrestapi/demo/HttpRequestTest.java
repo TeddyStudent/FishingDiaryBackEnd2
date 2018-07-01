@@ -29,14 +29,14 @@ public class HttpRequestTest {
     }
 
     @Test
-    public void whenGetUsers_thenStatus200() throws Exception {
+    public void whenGetUsers_thenReturnData() throws Exception {
 
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/user",
                 String.class)).contains("\"etunimi\":\"Teddy\"");
     }
 
     @Test
-    public void whenGetTrips_thenStatus200() throws Exception {
+    public void whenGetTrips_thenReturnData() throws Exception {
 
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/trip",
                 String.class)).contains("\"paikka\":\"Längelmävesi\"");
