@@ -34,6 +34,12 @@ public class MyRestController {
         return tripRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/api/trip/{id}", produces = "application/json")
+    public @ResponseBody Iterable<Trip> getTripsById(@PathVariable("id") Integer id) {
+        // This returns a JSON or XML with the trips
+        return tripRepository.findBytili_idtili(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/api/user", produces = "application/json")
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
