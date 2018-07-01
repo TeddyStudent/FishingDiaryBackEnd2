@@ -1,6 +1,8 @@
 package com.example.myrestapi.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tili")
@@ -10,12 +12,20 @@ public class User {
     //@GeneratedValue(strategy=GenerationType.AUTO)
     private Integer idtili;
 
+    @NotNull
+    @Size(max=45)
     private String etunimi;
 
+    @NotNull
+    @Size(max=45)
     private String sukunimi;
 
+    @NotNull
+    @Size(max=255)
     private String kayttajatunnus;
 
+    @NotNull
+    @Size(max=45)
     private String salasana;
 
     public Integer getIdtili() {

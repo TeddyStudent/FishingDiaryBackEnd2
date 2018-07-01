@@ -23,8 +23,22 @@ public class HttpRequestTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void greetingShouldReturnDefaultMessage() throws Exception {
+    public void aboutShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/about",
                 String.class)).contains("Fishing Diary server.");
+    }
+
+    @Test
+    public void whenGetUsers_thenStatus200() throws Exception {
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/user",
+                String.class)).contains("\"etunimi\":\"Teddy\"");
+    }
+
+    @Test
+    public void whenGetTrips_thenStatus200() throws Exception {
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/trip",
+                String.class)).contains("\"paikka\":\"Längelmävesi\"");
     }
 }
