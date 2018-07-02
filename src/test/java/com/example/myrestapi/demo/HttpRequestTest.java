@@ -41,4 +41,18 @@ public class HttpRequestTest {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/trip",
                 String.class)).contains("\"paikka\":\"Längelmävesi\"");
     }
+
+    @Test
+    public void whenGetTripsById_thenReturnData() throws Exception {
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/trip/1",
+                String.class)).contains("\"paikka\":\"Längelmävesi\"");
+    }
+
+    @Test
+    public void whenGetCatches_thenReturnData() throws Exception {
+
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/catch",
+                String.class)).contains("\"viehe\":\"Salmo hornet\"");
+    }
 }

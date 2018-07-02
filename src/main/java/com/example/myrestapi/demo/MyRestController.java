@@ -16,6 +16,9 @@ public class MyRestController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private CatchRepository catchRepository;
+
     @RequestMapping(method = RequestMethod.GET, value = "/", produces = "application/json")
     public ResponseEntity<String> hello() {
         System.out.println("hello!");
@@ -44,6 +47,12 @@ public class MyRestController {
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/catch", produces = "application/json")
+    public @ResponseBody Iterable<Catch> getAllCatches() {
+        // This returns a JSON or XML with the users
+        return catchRepository.findAll();
     }
 
 }
